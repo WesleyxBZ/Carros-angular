@@ -1,26 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NavAtividadesComponent } from './nav-atividades/nav-atividades.component';
-import { CadastrarComponent } from './cadastrar/cadastrar.component';
-import { VisualizarComponent } from './visualizar/visualizar.component';
+import {SharedUtilsModule} from './shared-utils/shared-utils.module';
+import {IndexModule} from './index/index.module';
+import {PrincipalModule} from './principal/principal.module';
+import {RouterModule} from '@angular/router';
+import {AppRoutes} from './app-carros.routing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {AuthInterceptor} from './core/security/auth.interceptor';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    NavAtividadesComponent,
-    CadastrarComponent,
-    VisualizarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    IndexModule,
+    PrincipalModule,
+    SharedUtilsModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
