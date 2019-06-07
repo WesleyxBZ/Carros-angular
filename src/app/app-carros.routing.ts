@@ -9,7 +9,7 @@ import {AuthGuard} from './core/security/auth.guard';
 export const AppRoutes: Routes = [
   // Index
   // Para acesso sem token.
-  {path: '', redirectTo: 'index', pathMatch: 'full'},
+  {path: '', redirectTo: 'principal', pathMatch: 'full'},
   {
     path: 'index', component: IndexComponent, canActivate: [AuthGuard],
     children: [

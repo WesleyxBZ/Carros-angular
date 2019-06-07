@@ -12,11 +12,11 @@ export class CarroService extends AbstractService {
   }
 
   findAll(): Observable<Carro[]> {
-    return this.http.get<Carro[]>(this.API_REST + '/visualizar');
+    return this.http.get<Carro[]>(this.API_REST + '/carro/angular');
   }
 
   save(carro: Carro): Observable<boolean> {
-    return this.http.post<boolean>(this.API_REST + '/cadastrar', carro);
+    return this.http.post<boolean>(this.API_REST + '/carro/angular', carro);
   }
 
 }

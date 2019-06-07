@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Carro} from '../../core/model/carro.model';
+import {CarroService} from '../../core/service/carro.service';
 
 @Component({
   selector: 'app-visualizar',
@@ -7,34 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisualizarComponent implements OnInit {
 
-  carros = [
-    {
-      nome: 'Ford',
-      marca: 'Fusion'
-    },
-    {
-      nome: 'Volkswagen',
-      marca: 'Virtus'
-    },
-    {
-      nome: 'Hyundai',
-      marca: 'Azera'
-    },
-    {
-      nome: 'Volkswagen',
-      marca: 'Jetta'
-    },
-    {
-      nome: 'Ford',
-      marca: 'Focus'
-    }
-  ];
+  carros: Carro[];
 
-  constructor() {
+  constructor(private carroService: CarroService) {
+    this.carros = [];
   }
 
   ngOnInit() {
-
+    this.carroService.findAll().subscribe(carros => {
+      if (carros) {
+        this.carros = carros;
+      }
+    });
   }
 
 }

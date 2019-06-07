@@ -14,13 +14,20 @@ import {VisualizarComponent} from './visualizar/visualizar.component';
 import {CadastrarComponent} from './cadastrar/cadastrar.component';
 import {PrincipalComponent} from './principal.component';
 import {CarroService} from '../core/service/carro.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
   imports: [
     SharedUtilsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
     NgxWebstorageModule.forRoot(),
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    ToastrModule.forRoot()
   ],
   declarations: [
     VisualizarComponent,

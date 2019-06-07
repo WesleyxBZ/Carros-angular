@@ -11,6 +11,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AuthInterceptor} from './core/security/auth.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,19 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
   imports: [
     BrowserModule,
     IndexModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      progressBar: true
+    }),
     PrincipalModule,
     SharedUtilsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
