@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-12">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-visualizar-tab" data-toggle="tab"
+             routerLinkActive="active" routerLink="/principal/visualizar"
+            role="tab" aria-controls="nav-visualizar" aria-selected="true">Visualizar carros</a>
+          <a class="nav-item nav-link" id="nav-cadastrar-tab" data-toggle="tab"
+             routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }" routerLink="/principal/cadastrar" role="tab"
+            aria-controls="nav-cadastrar" aria-selected="false">Cadastrar novo carro</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

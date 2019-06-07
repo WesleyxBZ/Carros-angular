@@ -1,0 +1,6 @@
+<app-navbar></app-navbar>
+  <app-nav-atividades></app-nav-atividades>
+<main class="container" [@routeAnimations]="o && o.activatedRouteData
+      && o.activatedRouteData['animation']">
+  <router-outlet #o="outlet"></router-outlet>
+</main>
